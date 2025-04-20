@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AuthLayout from '@/layouts/auth-layout';
+import Navbar from '@/components/NAVBAR/navbar';
 
 type RegisterForm = {
     name: string;
@@ -32,12 +33,18 @@ export default function Register() {
     };
 
     return (
-        <AuthLayout title="Create an account" description="Enter your details below to create your account">
+    <div className='  h-screen   bg-cover bg-cover bg-no-repeat '
+        style={{ backgroundImage: "url('/imagenes/data2bw.jpg')" }}>
+        
+        <Navbar></Navbar>
+
+        <AuthLayout title="Crea tu cuenta" description="Rellena el formulario para crear una cuenta">
             <Head title="Register" />
+           
             <form className="flex flex-col gap-6" onSubmit={submit}>
                 <div className="grid gap-6">
                     <div className="grid gap-2">
-                        <Label htmlFor="name">Name</Label>
+                        <Label htmlFor="name" className='text-white'>Name</Label>
                         <Input
                             id="name"
                             type="text"
@@ -54,7 +61,7 @@ export default function Register() {
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="email">Email address</Label>
+                        <Label htmlFor="email" className='text-white'>Email address</Label>
                         <Input
                             id="email"
                             type="email"
@@ -70,7 +77,7 @@ export default function Register() {
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="password">Password</Label>
+                        <Label htmlFor="password" className='text-white'>Password</Label>
                         <Input
                             id="password"
                             type="password"
@@ -86,7 +93,7 @@ export default function Register() {
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="password_confirmation">Confirm password</Label>
+                        <Label htmlFor="password_confirmation" className='text-white'>Confirm password</Label>
                         <Input
                             id="password_confirmation"
                             type="password"
@@ -101,7 +108,7 @@ export default function Register() {
                         <InputError message={errors.password_confirmation} />
                     </div>
 
-                    <Button type="submit" className="mt-2 w-full" tabIndex={5} disabled={processing}>
+                    <Button type="submit" className="mt-2 w-full bg-transparent backdrop-blur-lg" tabIndex={5} disabled={processing}>
                         {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
                         Create account
                     </Button>
@@ -109,11 +116,12 @@ export default function Register() {
 
                 <div className="text-muted-foreground text-center text-sm">
                     Already have an account?{' '}
-                    <TextLink href={route('login')} tabIndex={6}>
+                    <TextLink className='text-white' href={route('login')} tabIndex={6}>
                         Log in
                     </TextLink>
                 </div>
             </form>
         </AuthLayout>
+        </div>
     );
 }
